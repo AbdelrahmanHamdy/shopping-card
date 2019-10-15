@@ -45,12 +45,15 @@ export class RecipeEditComponent implements OnInit {
         'amount': new FormControl(null,[Validators.required,Validators.pattern(/^[1-9]+[0-9]*$/)])
       }
       )
-    );
-  }
+    );}
 
-  getControls() {
+    onDeleteIngredient(index:number){
+      (<FormArray>this.recipeForm.get('ingredients')).removeAt(index);
+    }
+
+   getControls() {
     return (<FormArray>this.recipeForm.get('ingredients')).controls;
-  }
+                }
   private initForm(){
 
     let recipeName='';
